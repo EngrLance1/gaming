@@ -4,36 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProGamer | Home</title>
-    <link rel="stylesheet" href="/gaming/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <head>
-    ...
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Paste the new CSS here */
-        .card-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-        }
-        @media only screen and (max-width: 620px) {
-/* For mobile phones: */
-.menu, .main, .right {
-width: 100%;
-}
-    </style>
-</head>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">PRO<span>GAMER</span></div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Games</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#" class="btn-primary">Login</a></li>
+            <li><a href="#" onclick="window.scrollTo(0,0)">Home</a></li>
+            <li><a href="#games-section">Games</a></li>
+            <li><a href="#" onclick="openModal('communityModal')">Community</a></li>
+            <li><a href="#" class="btn-primary" onclick="openModal('loginModal')">Login</a></li>
         </ul>
     </nav>
 
@@ -41,32 +23,303 @@ width: 100%;
         <div class="hero-content">
             <h1>Level Up Your Game</h1>
             <p>Join the world's most elite gaming community. Track stats, join tournaments, and dominate.</p>
-            <a href="#" class="cta-button">Join Now</a>
+            <a href="#games-section" class="cta-button">Join Now!</a>
         </div>
     </header>
 
-    <section class="game-grid">
-    <h2>Trending Games</h2>
-    <div class="container">
-        <div class="card">
-            <div class="card-img" style="background-image: url('images/mlbb.jpeg.jpg')"></div>
-            <h3>Mobile Legends</h3>
-            <p>MOBA • Mobile</p>
+    <section class="game-grid" id="games-section">
+        <h2>Trending Games</h2>
+        <div class="container">
+            
+            <div class="card" onclick="openModal('mlbbModal')">
+                <div class="card-img" style="background-image: url('/images/mlbb.jpeg.jpg')"></div>
+                <h3>Mobile Legends</h3>
+                <p>MOBA • Mobile</p>
+            </div>
+            
+            <div class="card" onclick="openModal('codmModal')">
+                <div class="card-img" style="background-image: url('/images/codm.jpeg.jpg')"></div>
+                <h3>CoD Mobile</h3>
+                <p>FPS • Battle Royale</p>
+            </div>
+            
+            <div class="card" onclick="openModal('valoModal')">
+                <div class="card-img" style="background-image: url('/images/valorant.jpeg.jpg')"></div>
+                <h3>Valorant</h3>
+                <p>Tactical Shooter • PC</p>
+            </div>
+
         </div>
-        
-        <div class="card">
-            <div class="card-img" style="background-image: url('/gaming/images/codm.jpeg.jpg')"></div>
-            <h3>CoD Mobile</h3>
-            <p>FPS • Battle Royale</p>
-        </div>
-        
-        <div class="card">
-            <div class="card-img" style="background-image: url('/gaming/images/valorant.jpeg.jpg')"></div>
-            <h3>Valorant</h3>
-            <p>Tactical Shooter • PC</p>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+            <div class="modal-header">
+                <h2>Player Login</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label>Username / ID</label>
+                    <input type="text" placeholder="Enter your Gamer ID">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter Password">
+                </div>
+                <button type="button" class="modal-btn">LOG IN</button>
+            </form>
+            <p class="switch-modal-text">No account? <a href="#" onclick="switchModal('loginModal', 'registerModal')">Register here</a></p>
         </div>
     </div>
-</section>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
+            <div class="modal-header">
+                <h2>Create Account</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" placeholder="Choose a Gamer Tag">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create Password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm Password">
+                </div>
+                <button type="button" class="modal-btn">REGISTER</button>
+            </form>
+            <p class="switch-modal-text">Already have an account? <a href="#" onclick="switchModal('registerModal', 'loginModal')">Login here</a></p>
+        </div>
+    </div>
+
+    <div id="communityModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('communityModal')">&times;</span>
+            <div class="modal-header">
+                <h2>Community Hub</h2>
+            </div>
+            <p>Connect with 50,000+ gamers online right now.</p>
+            
+            <hr class="divider">
+            
+            <h3 class="section-title">🏆 Global Leaderboard</h3>
+            <div class="leaderboard-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Game</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td class="top-player">ceekei</td>
+                            <td>MLBB</td>
+                            <td>2500</td>
+                        </tr>
+                        <tr>
+                            <td>#2</td>
+                            <td>Kaz</td>
+                            <td>CodM</td>
+                            <td>2450</td>
+                        </tr>
+                        <tr>
+                            <td>#3</td>
+                            <td>Primo</td>
+                            <td>Valorant</td>
+                            <td>2300</td>
+                        </tr>
+                        <tr>
+                            <td>#4</td>
+                            <td>Fyodor</td>
+                            <td>Summertime Saga</td>
+                            <td>2100</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="divider">
+
+            <h3 class="section-title">Recent Activity</h3>
+            <div class="community-item">
+                <strong>📢 Tournament Announcement</strong><br>
+                <small>Admin • 2 hours ago</small>
+            </div>
+            <div class="community-item">
+                <strong>💬 LFG: Ranked Grind (Epic/Legend)</strong><br>
+                <small>User: Ruruvai • 5 mins ago</small>
+            </div>
+            
+            <button class="modal-btn">Join Discord Server Now!</button>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+            <div class="modal-header"><h2>Player Login</h2></div>
+            <form>
+                <div class="form-group">
+                    <label>Username / ID</label>
+                    <input type="text" placeholder="Enter your Gamer ID">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter Password">
+                </div>
+                <button type="button" class="modal-btn">LOG IN</button>
+            </form>
+            <p class="switch-modal-text">No account? <a href="#" onclick="switchModal('loginModal', 'registerModal')">Register here</a></p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
+            <div class="modal-header"><h2>Create Account</h2></div>
+            <form>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" placeholder="Choose a Gamer Tag">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create Password">
+                </div>
+                <button type="button" class="modal-btn">REGISTER</button>
+            </form>
+            <p class="switch-modal-text">Already have an account? <a href="#" onclick="switchModal('registerModal', 'loginModal')">Login here</a></p>
+        </div>
+    </div>
+
+    <div id="communityModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('communityModal')">&times;</span>
+            <div class="modal-header"><h2>Community Hub</h2></div>
+            <p>Connect with 50,000+ gamers online right now.</p>
+            <hr class="divider">
+            
+            <h3 class="section-title">🏆 Global Leaderboard</h3>
+            <div class="leaderboard-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Game</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#1</td><td class="top-player">ceekei</td><td>LoL</td><td>2500</td></tr>
+                        <tr><td>#2</td><td>Fyodor</td><td>CS:GO</td><td>2450</td></tr>
+                        <tr><td>#3</td><td>Primo</td><td>Valorant</td><td>2300</td></tr>
+                        <tr><td>#4</td><td>Ruruvai</td><td>Valorant</td><td>2200</td></tr>
+                        <tr><td>#5</td><td>nk</td><td>Valorant</td><td>2100</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="divider">
+            <h3 class="section-title">Recent Activity</h3>
+            <div class="community-item">
+                <strong>📢 Tournament Announcement</strong><br>
+                <small>Admin • 2 hours ago</small>
+            </div>
+            
+             <a href="https://discord.gg/HYUjbdgG" target="_blank" class="modal-btn link-btn">Join Discord Sever Now!</a>
+        </div>
+    </div>
+
+    <div id="mlbbModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('mlbbModal')">&times;</span>
+            <div class="modal-header"><h2>Mobile Legends</h2></div>
+            <p>Join the fight in the Land of Dawn! Choose your favorite heroes and build the perfect team.</p>
+            <ul class="game-stats">
+                <li><strong>Current Season:</strong> S31</li>
+                <li><strong>Active Players:</strong> 1.2M</li>
+            </ul>
+            <a href="https://play.google.com/store/apps/details?id=com.mobile.legends&hl=en&gl=US" target="_blank" class="modal-btn link-btn">Download Game</a>
+        </div>
+    </div>
+
+    <div id="codmModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('codmModal')">&times;</span>
+            <div class="modal-header"><h2>Call of Duty: Mobile</h2></div>
+            <p>Top Meta Loadout for this Season (CBR4):</p>
+            
+            <div style="margin: 15px 0; border: 1px solid #45a29e; padding: 5px;">
+                <img src="/images/cbr4.jpg" alt="CODM Loadout" style="width: 100%; border-radius: 4px;">
+            </div>
+
+            <ul class="game-stats">
+                <li><strong>Attachments:</strong> Monolithic, Marksman Barrel</li>
+                <li><strong>Perks:</strong> Lightweight, Toughness</li>
+            </ul>
+            <button class="modal-btn">Copy Loadout Code</button>
+        </div>
+    </div>
+
+    <div id="valoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('valoModal')">&times;</span>
+            <div class="modal-header"><h2>Valorant</h2></div>
+            <p>A 5v5 character-based tactical shooter. Precise gunplay meets unique agent abilities.</p>
+            <ul class="game-stats">
+                <li><strong>New Agent:</strong> Vyse</li>
+                <li><strong>Map Pool:</strong> Bind, Haven</li>
+            </ul>
+            <a href="https://www.youtube.com/watch?v=e_E9W2vsRbQ" target="_blank" class="modal-btn link-btn">Watch Highlights</a>
+        </div>
+    </div>
+
+    <script>
+        
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+       
+        function switchModal(closeId, openId) {
+            closeModal(closeId);
+            openModal(openId);
+        }
+
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
 
 </body>
 </html>

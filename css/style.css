@@ -1,127 +1,374 @@
-:root {
-    --bg-dark: #0b0c10;
-    --bg-light: #1f2833;
-    --accent-neon: #00ff88; /* Gaming Green */
-    --accent-blue: #66fcf1;
-    --text-main: #ffffff;
-    --text-dim: #c5c6c7;
-}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    overflow-x: hidden;
 }
 
-h1, h2, .logo {
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
 
-/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
-    background: rgba(11, 12, 16, 0.95);
+    padding: 20px 5%;
+    background-color: #1f2833;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
-.logo span { color: var(--accent-neon); }
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: #66fcf1;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.logo span {
+    color: #45a29e;
+}
 
 .nav-links {
     list-style: none;
     display: flex;
-    align-items: center;
 }
 
-.nav-links li a {
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
     text-decoration: none;
-    color: var(--text-main);
-    margin: 0 15px;
-    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #66fcf1;
+}
+
+.btn-primary {
+    background-color: #45a29e;
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: #0b0c10 !important;
+    font-weight: bold !important;
     transition: 0.3s;
 }
 
-.nav-links li a:hover { color: var(--accent-neon); }
+.btn-primary:hover {
+    background-color: #66fcf1;
+    transform: scale(1.05);
+}
 
-/* Hero Section */
+
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.6), var(--bg-dark)), 
-                url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.hero h1 { font-size: 4rem; margin-bottom: 10px; }
-.hero p { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; }
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #c5c6c7;
+}
 
 .cta-button {
     padding: 15px 40px;
-    background: var(--accent-neon);
-    color: var(--bg-dark);
+    background: #66fcf1;
+    color: #0b0c10;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.1rem;
     border-radius: 5px;
     transition: 0.3s;
 }
 
 .cta-button:hover {
-    box-shadow: 0 0 20px var(--accent-neon);
-    transform: translateY(-3px);
+    background: #45a29e;
+    box-shadow: 0 0 15px #66fcf1;
 }
 
-/* Game Cards */
-.game-grid { padding: 50px 10%; }
-.game-grid h2 { margin-bottom: 30px; border-left: 5px solid var(--accent-neon); padding-left: 15px; }
+
+.game-grid {
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.game-grid h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #66fcf1;
+}
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .card {
-    background: var(--bg-light);
-    padding: 15px;
+    background: #1f2833;
+    padding: 20px;
     border-radius: 10px;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(102, 252, 241, 0.2);
+    border-color: #66fcf1;
+}
+
+.card-img {
+    height: 200px;
+    width: 100%;
+    background-color: #333;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.card p {
+    color: #888;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #1f2833;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #66fcf1;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
+    text-align: left;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.card:hover { transform: scale(1.05); border: 1px solid var(--accent-neon); }
+.close-btn:hover {
+    color: #66fcf1;
+}
 
-.card-img {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
+.modal-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #66fcf1;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #45a29e;
+    padding-bottom: 10px;
+}
+
+.section-title {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid #45a29e;
+    margin: 20px 0;
+    opacity: 0.3;
+}
+
+
+.form-group {
     margin-bottom: 15px;
 }
 
-.card-img {
-    height: 200px; /* Adjusted height for better balance */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    /* Optional: adds a slight glow effect to images */
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.5); 
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #c5c6c7;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background: #0b0c10;
+    border: 1px solid #45a29e;
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #66fcf1;
+    box-shadow: 0 0 5px rgba(102, 252, 241, 0.3);
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 12px;
+    background: #66fcf1;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #0b0c10;
+    transition: 0.3s;
+}
+
+.modal-btn:hover {
+    background-color: #45a29e;
+}
+
+.switch-modal-text {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.switch-modal-text a {
+    color: #66fcf1;
+    text-decoration: none;
+}
+
+
+.leaderboard-container {
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.leaderboard-table th, 
+.leaderboard-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #45a29e;
+}
+
+.leaderboard-table th {
+    color: #66fcf1;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.leaderboard-table tr:last-child td {
+    border-bottom: none;
+}
+
+.top-player {
+    color: #ffd700; 
+    font-weight: bold;
+}
+
+
+.community-item {
+    background: #0b0c10;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid #66fcf1;
+    border-radius: 0 5px 5px 0;
+}
+
+.game-stats {
+    margin: 20px 0;
+    padding-left: 20px;
+    color: #c5c6c7;
+}
+
+.game-stats li {
+    margin-bottom: 8px;
+}
+
+
+@media only screen and (max-width: 620px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links li {
+        margin: 0 10px;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .modal-content {
+        margin: 15% auto;
+        padding: 20px;
+    }
+}
+a.link-btn {
+    display: block;      
+    text-align: center;    
+    text-decoration: none; 
+}
+
+a.link-btn:hover {
+    color: #0b0c10;    
 }
